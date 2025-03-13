@@ -11,6 +11,8 @@ export class Level {
 
   get limits() {
     const increase = this.value - 4;
+    const isMoreOrKage = this.value >= 20;
+    const powerBaseLimit = 4 + 2 * increase;
 
     return {
       attributes: {
@@ -23,11 +25,11 @@ export class Level {
         max: this.value,
       },
       powers: {
-        total: 4 + 2 * increase,
+        total: isMoreOrKage ? powerBaseLimit + 4 : powerBaseLimit,
         max: Math.floor(this.value / 2),
       },
       abilities: {
-        total: 4 + 2 * increase,
+        total: isMoreOrKage ? powerBaseLimit + 4 : powerBaseLimit,
       },
     };
   }
